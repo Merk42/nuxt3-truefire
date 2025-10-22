@@ -1,0 +1,13 @@
+services:
+  my-app-dev:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "3000:3000"
+      - "24678:24678"
+    volumes:
+      - .:/src
+    working_dir: /src
+    environment:
+      - NODE_ENV=development
