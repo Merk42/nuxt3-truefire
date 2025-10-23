@@ -90,4 +90,13 @@ export type RESULT = {
     soundslice?: number;
     favorite?: number;
     objectID: string;
+    result: number;
+    duration: number;
 }
+
+export type PERSONAL_RESULT = RESULT & {
+  bookmarked:boolean;
+  progress:number;
+};
+
+export type PERONAL_DATA = Record<string, {bookmarked?:boolean,progress?:number}>

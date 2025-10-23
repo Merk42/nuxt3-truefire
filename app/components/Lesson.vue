@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { RESULT } from '../type';
+import type { PERSONAL_RESULT } from '../type';
 import ProgressDisplay from './ProgressDisplay.vue';
 const props = defineProps<{
-  lesson: RESULT;
+  lesson: PERSONAL_RESULT;
 }>();
 </script>
 <template>
@@ -10,15 +10,18 @@ const props = defineProps<{
         <div class="lesson">
             <img alt="img name" :src="lesson.Image"/>
             <span class="itemTitle" v-html="lesson.Name"></span>
-            <ProgressDisplay class="progress" :total="161" :completed="54"></ProgressDisplay>
+            <ProgressDisplay class="progress" :total="lesson.duration" :completed="lesson.progress"></ProgressDisplay>
             <span class="status">
-                <font-awesome icon="bookmark" />
-                <font-awesome icon="circle-check" />
+                <font-awesome icon="bookmark" :class="{ 'active': lesson.bookmarked }" />
+                <font-awesome icon="circle-check" :class="{ 'active': lesson.progress >= lesson.duration }" />
             </span>
         </div>
     </div>
 </template>
 <style scoped>
+.active{
+    color:var(--progress-blue)
+}
 .lesson {
     display: grid;
     gap:.75rem;

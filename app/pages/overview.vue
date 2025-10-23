@@ -2,9 +2,10 @@
 
 import { ref, computed } from 'vue';
 
-import type { LESSONS_RESPONSE } from '../type';
+import type { LESSONS_RESPONSE, PERONAL_DATA } from '../type';
 
 const data = ref<LESSONS_RESPONSE|null>(null);
+const personal = ref<PERONAL_DATA|null>(null);
 
 const numtopics = ref(64);
 const numlesson = ref(284);
@@ -27,17 +28,37 @@ try {
   }
 }
 
+async function fetchPersonal() {
+try {
+    personal.value = null;
+    const response = await fetch('/personal.json');
+    const result = await response.json() as PERONAL_DATA;
+    personal.value = result;
+  } catch (e) {
+    console.log('error', e);
+  }
+}
+
 const filteredLessons = computed(() => {
+    const P:PERONAL_DATA|null = personal.value
     if (!data.value?.search.lessons?.result.results) {
         return []
     }
-    if (!fterm.value) {
-        return data.value?.search.lessons?.result.results
+    
+    const GENERAL = !!fterm.value ? data.value?.search.lessons?.result.results.filter(result => result.Name.toLowerCase().includes(fterm.value.toLowerCase())) : data.value?.search.lessons?.result.results
+    if (!GENERAL) {
+        return []
     }
-    return data.value?.search.lessons?.result.results.filter(result => result.Name.toLowerCase().includes(fterm.value.toLowerCase()))
+    const M = GENERAL.map(result => ({
+        ...result,
+        bookmarked:P && P[result.id.toString()]?.bookmarked ? true : false,
+        progress:P && P[result.id.toString()]?.progress ? P[result.id.toString()].progress ?? 0 : 0
+    }));
+    return M
 })
 
 fetchData()
+fetchPersonal()
 </script>
 
 <template>
