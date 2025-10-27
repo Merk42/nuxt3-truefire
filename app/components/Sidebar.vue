@@ -1,65 +1,65 @@
 <script setup lang="ts">
 </script>
 <template>
-        <aside class="[grid-area:aside] bg-blue-600">
+        <aside class="[grid-area:aside] grid grid-cols-[auto] grid-rows-[auto_auto_1fr_auto] bg-blue-600 p-4">
             <div>icon</div>
             <div>select</div>
             <div>
-                <ul>
-                    <li>
-                        <a href="#">
+                <ul class="list-none">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Home</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Lessons</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Video Exchanges</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Study Materials</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Bookmarks</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>History</span>
                         </a>
                     </li>
                 </ul>
-                <ul>
-                    <li>
-                        <a href="#">
+                <ul class="list-none">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Metronome</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Scale Browser</span>
                         </a>
                     </li>
                 </ul>
-                <ul>
-                    <li>
-                        <a href="#">
+                <ul class="list-none">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Community</span>
                         </a>
@@ -67,9 +67,9 @@
                 </ul>
             </div>
             <div>
-                <ul>
-                    <li>
-                        <a href="#">
+                <ul class="list-none">
+                    <li class="mb-1">
+                        <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
                             <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>My Account</span>
                         </a>
@@ -78,31 +78,3 @@
             </div>
         </aside>
 </template>
-<style scoped>
-
-aside {
-    padding:20px;
-
-    grid-template-columns: auto;
-    grid-template-rows: auto auto 1fr auto;
-}
-aside ul {
-    list-style-type:none;
-    color:#FFF;
-    margin:0;
-    padding:0;
-}
-aside li {
-    margin:.25rem 0;
-}
-aside a  {
-    color:#FFF;
-    width:100%;
-    border-radius: .25rem;
-    padding:.75rem;
-    display: block
-}
-aside a:hover{
-    background-color:rgba(255, 255, 255, .25)
-}
-</style>

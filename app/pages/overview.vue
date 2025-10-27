@@ -13,8 +13,11 @@ const numexchanges = ref(1673)
 const view = ref(1);
 const fterm = ref('');
 
+const sortOptions = ref(['sort'])
+const sortValue = ref('sort')
+
 const lessonlayout = computed(() => {
-    return `view-${view.value}`
+    return `grid grid-cols-${view.value} gap-4`
 })
 
 async function fetchAllData() {
@@ -68,23 +71,21 @@ fetchAllData()
                 <span>{{numexchanges}} Video Exchanges</span>
             </p>
             <div id="upper-filters">
-                <input type="search" v-model="fterm" placeholder="search" aria-label="search"/>
-                <select aria-label="sort">
-                    <option>Sort</option>
-                </select>
+                <UInput icon="fa7-regular:circle" size="md" variant="outline" placeholder="search"  v-model="fterm" />
+                <USelect v-model="sortValue" :items="sortOptions" class="w-48" />
                 <fieldset>
                     <legend>View</legend>
                     <input id="view-1" type="radio" name="view" v-model="view" :value="1"/>
                     <label for="view-1">
-                        <UIcon name="i-lucide-lightbulb" class="size-5" />
+                        <UIcon name="fa7-solid:grip-lines" class="size-5" />
                     </label>
                     <input id="view-2" type="radio" name="view" v-model="view" :value="2"/>
                     <label for="view-2">
-                        <UIcon name="i-lucide-lightbulb" class="size-5" />
+                        <UIcon name="fa7-solid:grip-vertical" class="size-5" />
                     </label>
                     <input id="view-3" type="radio" name="view" v-model="view" :value="3"/>
                     <label for="view-3">
-                        <UIcon name="i-lucide-lightbulb" class="size-5" />
+                        <UIcon name="fa7-solid:grip-horizontal" class="size-5" />
                     </label>
                 </fieldset>
             </div>
@@ -97,111 +98,3 @@ fetchAllData()
         </main>
     </div>
 </template>
-<style scoped>
-#lesson-grid {
-    height:100vh;
-}
-
-main {
-    margin-inline:.5rem
-}
-aside {
-    display: none;
-}
-aside ul+ul {
-    border-top: 1px solid #314b65;
-}
-#view-3,
-#view-3+label {
-    display: none;
-}
-@media only screen and (min-width:640px) {
-    aside{
-        display: grid;
-    }
-    main {
-        margin-inline:3rem
-    }
-    
-    #view-3,
-    #view-3+label{
-        display: block;
-    }
-
-}
-#result-summary,
-#result-summary span{
-    display:flex;
-    align-items: center;
-    color:var(--secondary-copy)
-}
-#result-summary span+span::before {
-    content:"\A";
-    width:2px;
-    aspect-ratio:1;
-    border-radius:50%;
-    background: var(--secondary-copy);
-    display:inline-block;
-    margin:0 10px;
-}
-#lessons-list {
-    display: grid;
-    gap:1rem;
-    --_across:1;
-    grid-template-columns: repeat(var(--_across), minmax(0, 1fr)); 
-}
-#lessons-list.view-2 {
-    --_across:2
-}
-#lessons-list.view-3 {
-    --_across:3
-}
-
-#upper-filters {
-    display: flex;
-    gap:.5rem;
-    margin-bottom: 1.5rem;
-}
-
-fieldset{
-    display: flex;
-    border: none;
-    align-items: center;
-    padding:0;
-    flex-grow: 1;
-    justify-content: right;
-}
-fieldset legend  {
-    float: left;
-}
-input[type="radio"] {
-    	width:0;
-	opacity:0;
-	position:absolute;
-}
-input[type="radio"]+label{
-    cursor: pointer;
-    border:1px solid transparent;
-    border-radius: 100vw;
-    padding: .5rem;
-    aspect-ratio: 1;
-    display:inline-block
-}
-input[type="radio"]:checked+label{
-    border-color: black;
-}
-
-input[type="search"],
-select {
-    border-radius: 100vw;
-    height:35px;
-}
-select {
-    flex-basis: max-content;
-}
-input[type="search"] {
-    background-color: var(--inactive-color);
-    border-color:transparent;
-    padding-left:1rem
-}
-</style>
