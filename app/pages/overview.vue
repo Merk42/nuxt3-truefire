@@ -17,25 +17,18 @@ const lessonlayout = computed(() => {
     return `view-${view.value}`
 })
 
-async function fetchData() {
-try {
-    data.value = null;
-    const response = await fetch('/lessons.json');
-    const result = await response.json() as LESSONS_RESPONSE;
-    data.value = result;
-  } catch (e) {
-    console.log('error', e);
-  }
-}
+async function fetchAllData() {
+  const personalPromise:Promise<PERONAL_DATA> = fetch('/personal.json').then(response => response.json());
+  const generalPromise:Promise<LESSONS_RESPONSE> = fetch('/lessons.json').then(response => response.json());
+  
 
-async function fetchPersonal() {
-try {
-    personal.value = null;
-    const response = await fetch('/personal.json');
-    const result = await response.json() as PERONAL_DATA;
-    personal.value = result;
-  } catch (e) {
-    console.log('error', e);
+  try {
+    const [data1, data2] = await Promise.all([personalPromise, generalPromise]);
+    console.log('All data fetched successfully:', data1, data2);
+    personal.value = data1;
+    data.value = data2;
+  } catch (error) {
+    console.error('Error fetching data:', error);
   }
 }
 
@@ -57,15 +50,17 @@ const filteredLessons = computed(() => {
     return M
 })
 
-fetchData()
-fetchPersonal()
+fetchAllData()
 </script>
 
 <template>
-    <div id="lesson-grid">
-        <header></header>
+    <div id="lesson-grid" class="grid gap-4 md:grid-cols-[300px_1fr] md:grid-rows-[50px_1fr] 
+                
+                
+                md:[grid-template-areas:'aside_header'_'aside_main']">
+        <header class="[grid-area:header]"></header>
         <Sidebar></Sidebar>
-        <main>
+        <main class="[grid-area:main]">
             <h1>Intermediate</h1>
             <p id="result-summary">
                 <span>{{numtopics}} Topics</span>
@@ -81,15 +76,15 @@ fetchPersonal()
                     <legend>View</legend>
                     <input id="view-1" type="radio" name="view" v-model="view" :value="1"/>
                     <label for="view-1">
-                        <font-awesome icon="grip-lines"/>
+                        <UIcon name="i-lucide-lightbulb" class="size-5" />
                     </label>
                     <input id="view-2" type="radio" name="view" v-model="view" :value="2"/>
                     <label for="view-2">
-                        <font-awesome icon="grip-vertical"/>
+                        <UIcon name="i-lucide-lightbulb" class="size-5" />
                     </label>
                     <input id="view-3" type="radio" name="view" v-model="view" :value="3"/>
                     <label for="view-3">
-                        <font-awesome icon="grip"/>
+                        <UIcon name="i-lucide-lightbulb" class="size-5" />
                     </label>
                 </fieldset>
             </div>
@@ -104,21 +99,8 @@ fetchPersonal()
 </template>
 <style scoped>
 #lesson-grid {
-    display: grid;
-
     height:100vh;
 }
-
-header {
-    grid-area: header;
-}
-aside {
-    grid-area: aside;
-}
-main {
-    grid-area: main;
-}
-
 
 main {
     margin-inline:.5rem
@@ -134,13 +116,6 @@ aside ul+ul {
     display: none;
 }
 @media only screen and (min-width:640px) {
-    #lesson-grid {
-        grid-template-columns: 300px 1fr;
-        grid-template-rows:50px 1fr;
-        grid-template-areas:
-        "aside header"
-        "aside main ";
-    }
     aside{
         display: grid;
     }

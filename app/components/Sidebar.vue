@@ -1,44 +1,44 @@
 <script setup lang="ts">
 </script>
 <template>
-        <aside>
+        <aside class="[grid-area:aside] bg-blue-600">
             <div>icon</div>
             <div>select</div>
             <div>
                 <ul>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <font-awesome icon="circle-play" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Lessons</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Video Exchanges</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Study Materials</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Bookmarks</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>History</span>
                         </a>
                     </li>
@@ -46,13 +46,13 @@
                 <ul>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Metronome</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Scale Browser</span>
                         </a>
                     </li>
@@ -60,7 +60,7 @@
                 <ul>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>Community</span>
                         </a>
                     </li>
@@ -70,7 +70,7 @@
                 <ul>
                     <li>
                         <a href="#">
-                            <font-awesome icon="bookmark" />
+                            <UIcon name="i-lucide-lightbulb" class="size-5" />
                             <span>My Account</span>
                         </a>
                     </li>
@@ -81,8 +81,6 @@
 <style scoped>
 
 aside {
-    background-color: var(--side-blue);
-    color:#FFF;
     padding:20px;
 
     grid-template-columns: auto;

@@ -1,61 +1,19 @@
 <script setup lang="ts">
 import type { PERSONAL_RESULT } from '../type';
-import ProgressDisplay from './ProgressDisplay.vue';
 const props = defineProps<{
   lesson: PERSONAL_RESULT;
 }>();
 </script>
 <template>
-    <div class="lesson_wrapper">
-        <div class="lesson">
-            <img alt="img name" :src="lesson.Image"/>
+    <div class="lesson_wrapper @container">
+        <div class="grid gap-1 p-1 @[50vw]:grid-cols-[auto_1fr_auto] border-1 border-solid rounded-sm">
+            <img alt="img name" :src="lesson.Image" class="rounded-sm overflow-hidden w-full @[50vw]:h-[50px]"/>
             <span class="itemTitle" v-html="lesson.Name"></span>
-            <ProgressDisplay class="progress" :total="lesson.duration" :completed="lesson.progress"></ProgressDisplay>
-            <span class="status">
-                <font-awesome icon="bookmark" :class="{ 'active': lesson.bookmarked }" />
-                <font-awesome icon="circle-check" :class="{ 'active': lesson.progress >= lesson.duration }" />
+            <UProgress class="@[50vw]:col-span-3 @[50vw]:order-1"  v-model="lesson.progress" :max="lesson.duration" />
+            <span class="text-right">
+                <UIcon name="i-lucide-lightbulb" class="size-5" />
+                <UIcon name="i-lucide-lightbulb" class="size-5" />
             </span>
         </div>
     </div>
 </template>
-<style scoped>
-.active{
-    color:var(--progress-blue)
-}
-.lesson {
-    display: grid;
-    gap:.75rem;
-    padding:.5rem;
-    border:1px solid var(--border-color);
-    border-radius:1rem;
-}
-img {
-    width:100%;
-    border-radius: .5rem;
-    overflow: hidden;
-}
-small {
-    color:var(--secondary-copy)
-}
-.status {
-    text-align: right;
-}
-
-.lesson_wrapper {
-  container-type: inline-size;
-}
-
-
-@container (width > 50vw) {
-    .lesson img {
-        height:50px
-    }
-    .lesson {
-        grid-template-columns: auto 1fr auto;
-    }
-    .lesson .progress {
-        order:1;
-        grid-column: span 3;
-    }
-}
-</style>

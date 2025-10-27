@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import FormInput from '../components/FormInput.vue';
 const username = ref("");
 const password = ref("")
 
@@ -22,8 +21,12 @@ const handleSubmit = async () => {
                 <h2>Sign in to ArtistWorks</h2>
                 <p>New user? <a href="#">Create an account.</a></p>
                 <form @submit.prevent="handleSubmit">
-                    <FormInput id="login-username" v-model="username">Enter username</FormInput>
-                    <FormInput id="login-password" v-model="password" type="password">Enter password</FormInput>
+                    <UFormField label="Enter username">
+                        <UInput v-model="username" />
+                    </UFormField>
+                    <UFormField label="Enter password">
+                        <UInput v-model="password" />
+                    </UFormField>
                     <button :disabled="!cancontinue">Continue</button>
                 </form>
                 <p><a href="#">Forgot password?</a></p>
