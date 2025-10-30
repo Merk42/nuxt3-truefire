@@ -65,7 +65,7 @@ fetchAllData()
         <Sidebar></Sidebar>
         <main class="[grid-area:main]">
             <h1>Intermediate</h1>
-            <p id="result-summary">
+            <p id="result-summary" class="flex gap-1">
                 <span>{{numtopics}} Topics</span>
                 <span>{{numlesson}} Lesson Videos</span>
                 <span>{{numexchanges}} Video Exchanges</span>
