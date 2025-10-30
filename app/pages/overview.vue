@@ -70,7 +70,7 @@ fetchAllData()
                 <span>{{numlesson}} Lesson Videos</span>
                 <span>{{numexchanges}} Video Exchanges</span>
             </p>
-            <div id="upper-filters">
+            <div id="upper-filters" class="flex">
                 <UInput icon="fa7-regular:circle" size="md" variant="outline" placeholder="search"  v-model="fterm" />
                 <USelect v-model="sortValue" :items="sortOptions" class="w-48" />
                 <fieldset>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 </script>
 <template>
-        <aside class="[grid-area:aside] grid grid-cols-[auto] grid-rows-[auto_auto_1fr_auto] bg-blue-600 p-4">
+        <aside class="[grid-area:aside] grid grid-cols-[auto] grid-rows-[auto_auto_1fr_auto] bg-blue-900 p-4">
             <div>icon</div>
             <div>select</div>
             <div>
