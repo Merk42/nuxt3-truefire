@@ -1,7 +1,7 @@
 <script setup lang="ts">
 </script>
 <template>
-        <aside class="[grid-area:aside] grid grid-cols-[auto] grid-rows-[auto_auto_1fr_auto] bg-blue-900 p-4">
+        <aside class="[grid-area:aside] grid grid-cols-[auto] grid-rows-[auto_auto_1fr_auto] bg-blue-900 p-4 hidden md:grid">
             <div>icon</div>
             <div>select</div>
             <div>
@@ -43,6 +43,7 @@
                         </a>
                     </li>
                 </ul>
+                <USeparator />
                 <ul class="list-none">
                     <li class="mb-1">
                         <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">
@@ -57,6 +58,7 @@
                         </a>
                     </li>
                 </ul>
+                <USeparator />
                 <ul class="list-none">
                     <li class="mb-1">
                         <a href="#" class="flex gap-1 items-center rounded-sm p-2 text-white hover:bg-white/25">

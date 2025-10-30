@@ -71,7 +71,7 @@ fetchAllData()
                 <span>{{numexchanges}} Video Exchanges</span>
             </p>
             <div id="upper-filters" class="flex">
-                <UInput icon="fa7-regular:circle" size="md" variant="outline" placeholder="search"  v-model="fterm" />
+                <UInput icon="fa7-regular:circle" size="xl" variant="outline" placeholder="search"  v-model="fterm" />
                 <USelect v-model="sortValue" :items="sortOptions" class="w-48" />
                 <fieldset>
                     <legend>View</legend>
