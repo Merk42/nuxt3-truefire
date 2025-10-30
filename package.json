@@ -29,6 +29,7 @@
     "@vue/test-utils": "^2.4.6",
     "tailwindcss": "^4.1.16",
     "vee-validate": "^4.15.1",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "zod": "^4.1.12"
   }
 }
